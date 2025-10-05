@@ -1,5 +1,6 @@
 #include <iostream>
 #include <windows.h>
+#include <cstdlib>
 using namespace std;
 
 /// PART I
@@ -90,3 +91,42 @@ int main() {
 }
 
 /// PART II
+// task 1
+int main() {
+    srand(time(0));
+    int level, questions, maxNum;
+
+    cout << "Choose difficulty level (1 = easy, 2 = medium, 3 = hard): ";
+    cin >> level;
+
+    if (level == 1) { questions = 5; maxNum = 5; }
+    else if (level == 2) { questions = 7; maxNum = 10; }
+    else { questions = 10; maxNum = 20; }
+
+    int correct = 0;
+
+    for (int i = 0; i < questions; i++) {
+        int a = rand() % (maxNum + 1);
+        int b = rand() % (maxNum + 1);
+        int ans;
+
+        cout << "Question " << (i + 1) << ": " << a << " * " << b << " = ";
+        cin >> ans;
+
+        if (ans == a * b) {
+            cout << "Correct! :D" << endl;
+            correct++;
+        }
+        else {
+            cout << "Wrong! The answer is " << (a * b) << endl;
+        }
+    }
+
+    cout << "\nYour score: " << correct << " out of " << questions << endl;
+
+    if (correct == questions) cout << "LESGOOOOO :scream: :scream: :scream:" << endl;
+    else if (correct >= questions / 2) cout << "Not bad! Keep practicing lmao" << endl;
+    else cout << "Oof... you're stupid ngl" << endl;
+}
+
+// task 2
